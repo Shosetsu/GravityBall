@@ -26,7 +26,7 @@ $(function(){
 $(window).resize(resize);
 
 function eventBind(){
-	$(".console div").click(function(){
+	$(".console div").on("click",function(){
 		if(!last_mode&&$(".console input[type='radio']:checked").length==0)
 			return;
 		if(!$(this).hasClass('inactive')){
@@ -40,7 +40,7 @@ function eventBind(){
 		}
 		$(".console div").toggleClass("inactive");	
 	});
-	$(".console input[name='config']").click(function(){
+	$(".console input[name='config']").on("click",function(){
 		if($(this).val()!=last_mode||($(this).val()==last_mode && !$(".console div").hasClass('inactive'))){
 			last_mode = $(this).val();
 			$(".console div").addClass("inactive");
@@ -53,7 +53,7 @@ function eventBind(){
 			changeMode();
 		}
 	});
-	$(".console input:not([name=config]").click(function(){
+	$(".console input:not([name=config]").on("click",function(){
 		if($(this).val()=="0" || !$(this).is(':checked')){
 			$(this).val("1");
 			$(".console div").addClass("inactive");
@@ -274,7 +274,7 @@ var refreshPower = function(){
 	}
 	setTimeout(refreshPower,20);
 };
-$(window).mousemove(function(e){
+$(window).on("mousemove touchmove",function(e){
 	if(gravMoveFlag){
 		$("#gravBall").css({
     		top: e.clientY-20+'px',
@@ -282,7 +282,7 @@ $(window).mousemove(function(e){
 		});
 	}
 });
-$(window).mousedown(function(e){
+$(window).on("mousedown touchstart",function(e){
 	timer = 0;
 	if(e.target!=$("div.main")[0] || $("#onePress:checked").length && !(xV == 0 && yV == 0)) return;
 	pressDownFlag = 1;
@@ -298,7 +298,7 @@ $(window).mousedown(function(e){
 	if(!$("#noCharge:checked").length)
 		refreshPower();
 });
-$(window).mouseup(function(e){
+$(window).on("mouseup touchend",function(e){
 	gravMoveFlag = 0;
 	powerFlag=0;
 	if(!pressDownFlag) return;
