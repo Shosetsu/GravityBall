@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>  
+  <link rel="stylesheet" type="text/css" href="./GravityBall.css">
+  <script src="./jquery-3.3.1.min.js"></script> 
+  <script src="./GravityBall.js"></script> 
+  <title>Gravity Ball</title> 
+ </head> 
+ <body> 
+  <div class="main"> 
+   <div class="report">
+    <h4></h4>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+   </div> 
+   <div class="console">
+    <input type="radio" name="config" id="fast" value="1">
+    <label for="fast">加速模式</label>
+    <input type="radio" name="config" id="slow" value="2">
+    <label for="slow">减速模式</label>
+    <input type="radio" id="chaos" value="0">
+    <label for="chaos">无重虚空</label>
+    <input type="radio" id="superGrav" value="0">
+    <label for="superGrav">极限重力</label>
+    <input type="radio" id="onePress" value="0">
+    <label for="onePress">仅限一击</label>
+    <input type="radio" id="noCharge" value="0">
+    <label for="noCharge">禁止蓄力</label>
+    <div>通常模式</div>
+   </div> 
+   <div class="chaos-console"> 
+   	<div id="gravBall"> 
+   </div> 
+   </div> 
+   <div class="power-bar">
+   	<div>
+   	</div>
+   </div> 
+   	<div id="ball"> 
+   </div> 
+  </div>  
+ </body>
+</html>

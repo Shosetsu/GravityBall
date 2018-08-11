@@ -1,0 +1,145 @@
+body {
+	background-image: url(./botanical_art.jpg);
+	margin : 0px;
+	font-family: 'Microsoft YaHei','Apple LiGothic Medium','STHeiti Light','SimHei','arial';
+    overflow: hidden;
+}
+div.main {
+    border: 10px solid red;
+    box-sizing: border-box;
+	background-color: rgba(255, 250, 250,0.8);
+}
+div.main.open-chaos {
+    background-color: black;
+}
+div.main div.report {
+    position: absolute;
+    border: 3px solid #F44336;
+    box-sizing: border-box;
+	background-color: rgba(255, 250, 250,0.8);
+    padding: 5px;
+    border-radius: 8px;
+}
+div.main div.console {
+    position: absolute;
+    border: 3px solid #F44336;
+    box-sizing: border-box;
+    background-color: rgba(255, 250, 250,0.8);
+    border-radius: 8px;
+}
+div.main div.power-bar {
+    position: absolute;
+    border: 3px solid #F44336;
+    box-sizing: border-box;
+    background-color: rgb(255, 250, 250);
+    border-radius: 100px;
+    overflow: hidden;
+}
+div.main div.power-bar div{
+    background-color: aquamarine;
+    border-radius: 0px 0px 100px 100px;
+    position: relative;
+}
+div.main #ball {
+    position: relative;
+	width: 18px;
+    height: 18px;
+    background: gold;
+    border-radius: 9px;
+    opacity: 1;
+    border: 1px solid violet;
+}
+div.main.open-chaos #ball {
+    background: gold;
+    border: 1px solid red;
+}
+div.report h4 {
+    text-align: center;
+    margin: 1em 0.5em;
+}
+div.report p {
+    font-size: 16px;
+    margin: 0.5em;
+}
+div.main div.console :hover{
+	background: beige;
+    color: crimson;
+}
+input[type="radio"] {
+	display: none;
+}
+input[type="radio"] + label:first-of-type{
+	border-radius: 5px 0px 0px 0px;
+}
+input[type="radio"] + label:last-of-type{
+	border-radius: 0px 5px 0px 0px;
+}
+input[type="radio"] + label{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 21.33333px;
+	height: 65px;
+	margin: 0;
+	padding: 5px;
+	background: #bdc3c7;
+	color: #869198;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+input[type="radio"]:checked + label {
+	background-color: #a1b91d;
+	color: #fff;
+}
+div.main div.chaos-console {
+	display: none;
+    position: absolute;
+    border: 3px solid #F44336;
+    box-sizing: border-box;
+	background-color: snow;
+    opacity: 0.8;
+    border-radius: 8px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 24px 49px;
+}
+div.main div.chaos-console.open-chaos {
+	display: inline;
+}
+div.main div.chaos-console #gravBall {
+    position: fixed;
+	width: 34px;
+    height: 34px;
+    background: red;
+    border-radius: 20px;
+    opacity: 1;
+    border: 3px solid gold;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+div.main div.chaos-console #gravBall:hover {
+    background: red;
+    opacity: 0.9;
+    border-color: darkorange;
+}
+div.console div {
+	position: absolute;
+    height: 23px;
+    width: 187px;
+    top: 74px;
+    border-radius: 0px 0px 5px 5px;
+    background-color: #a1b91d;
+    color: #fff;
+    padding: 0.5px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+div.console div.inactive {
+	background: #bdc3c7;
+	color: #869198;
+}
