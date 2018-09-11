@@ -37,8 +37,7 @@ $(function(){
 	eventBind();
 	x = $('.main')[0].clientWidth/2;
 	y = $('.main')[0].clientHeight-10;
-	report();
-//	setInterval(report,(1000/60));
+	setInterval(report,(1000/60));
 	refresh();
 });
 $(window).resize(resize);
