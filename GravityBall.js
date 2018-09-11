@@ -14,17 +14,34 @@ const setX = (isX) => x += isX / scale;
 const setY = (isY) => y += isY / scale;
 const getGravBall = () => [$("#gravBall")[0].offsetLeft-$(".main")[0].offsetLeft+10,$("#gravBall")[0].offsetTop-$(".main")[0].offsetTop+10];
 const absPlus = (value,plusValue) => value<0?value-plusValue:value+plusValue;
+const setLanguage = (language) => $("body").removeClass("en ja zh").addClass(language);
+const getLanguage = () => {
+	let lg = navigator.language;
+	let clg = 'en';
+	$("#language option").each(function(i,o){
+		if(new RegExp(o.value).test(lg))
+			clg = o.value;
+	});
+	return clg;
+};
 
 $(function(){
+	let language = localStorage["language"]?localStorage["language"]:getLanguage();
+	$("#language").val(language);
+	setLanguage(language);
+	$("#language").change(function(){
+		setLanguage(this.value);
+		localStorage["language"] = this.value;
+	});
 	resize();
 	eventBind();
 	x = $('.main')[0].clientWidth/2;
 	y = $('.main')[0].clientHeight-10;
-	setInterval(report,(1000/60));
+	report();
+//	setInterval(report,(1000/60));
 	refresh();
 });
 $(window).resize(resize);
-
 function eventBind(){
 	$(".console div").on("click",function(){
 		if(!last_mode&&$(".console input[type='radio']:checked").length==0)
@@ -110,7 +127,7 @@ function resize(){
 
 	// the console window size
 	let _tempConsoleWidth = _tempOtherWidth>=200?200:0;
-	let _tempConsoleHeight = _tempSize-350>=110?110:0;
+	let _tempConsoleHeight = _tempSize-350>=130?130:0;
 	$("div.main div.console").css({
 	    width: _tempConsoleWidth-6,
 		height: _tempConsoleHeight-6,
@@ -146,12 +163,10 @@ function resize(){
 	}
 
 	// the new div of chaos only size
-	let _tempChaosConsoleWidth = _tempOtherWidth>=200?150:0;
-	let _tempChaosConsoleHeight = _tempSize-460>=100?100:0;
 	$("div.main div.chaos-console").css({
-	    width: _tempChaosConsoleWidth-6,
-		height: _tempChaosConsoleHeight-6,
-		left : _tempOtherWidth-_tempChaosConsoleWidth-45,
+	    width: 144,
+		height: 94,
+		left : _tempOtherWidth-189,
 		top : _tempOtherHeight+50+_tempLogHeight+_tempConsoleHeight
 	});
 
@@ -159,10 +174,8 @@ function resize(){
 	PLUS_Y = (window.innerHeight-$('.main')[0].clientHeight)/2+10;
 	BORD_X = $('.main')[0].clientWidth-10;
 	BORD_Y = $('.main')[0].clientHeight-10;
-	let str0 = "~Report Board~";
-	let str4 = "W.Size: ["+$('.main')[0].clientWidth+","+$('.main')[0].clientHeight+"]";
-	$("div.main div.report h4").text(str0);
-	$("div.main div.report p:eq(3)").text(str4);
+	let str4 = $('.main')[0].clientWidth+"x"+$('.main')[0].clientHeight;
+	$("div.main div.report p.w-size").text(str4);
 }
 
 function refresh(){
@@ -210,11 +223,11 @@ function process(){
 }
 
 function report(){
-	let str1 = "Ball: ["+Math.round(x)+","+Math.round(y)+"]";
-	let str2 = "H.Speed："+Math.abs(Math.round(xV));
-	let str3 = "V.Speed："+Math.abs(Math.round(yV));
-	let str5 = "W.Speed："+fps+"fps";
-	$("div.main div.report p:eq(0)").text(str1);
+	let str1 = "["+Math.round(x)+","+Math.round(y)+"]";
+	let str2 = Math.abs(Math.round(xV));
+	let str3 = Math.abs(Math.round(yV));
+	let str5 = fps+"fps";
+	$("div.main div.report p.ball").text(str1);
 	$("div.main div.report p:eq(1)").text(str2);
 	$("div.main div.report p:eq(2)").text(str3);
 	$("div.main div.report p:eq(4)").text(str5);

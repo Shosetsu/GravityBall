@@ -1,8 +1,19 @@
 body {
 	background-image: url(./botanical_art.jpg);
 	margin : 0px;
-	font-family: 'Microsoft YaHei','Apple LiGothic Medium','STHeiti Light','SimHei','arial';
+	font-family: 'Apple LiGothic Medium','arial','Meiryo','Microsoft YaHei';
     overflow: hidden;
+}
+div.navi {
+    position: absolute;
+    top: 0px;
+    left: calc(100% - 100px);
+}
+div.navi #language{
+    margin: 0;
+    padding: 2px 10px;
+    width: 100px;
+    background-color: beige;
 }
 div.main {
     border: 10px solid red;
@@ -53,14 +64,73 @@ div.main.open-chaos #ball {
     background: gold;
     border: 1px solid red;
 }
-div.report h4 {
+div.report .title {
     text-align: center;
     margin: 1em 0.5em;
+}
+div.report .title::before {
+    content: "~☆Report Board☆~";
+}
+.zh div.report .title::before {
+    content: "~☆报告版☆~";
+}
+.ja div.report .title::before {
+    content: "~レポートボード~";
 }
 div.report p {
     font-size: 16px;
     margin: 0.5em;
+    text-align: right;
 }
+div.report p::before {
+    float: left;
+}
+div.report p.ball::before {
+    content: "Ball：";
+}
+div.report p.h-speed::before {
+    content: "H.Speed：";
+}
+div.report p.v-speed::before {
+    content: "V.Speed：";
+}
+div.report p.w-size::before {
+    content: "W.Size：";
+}
+div.report p.fps::before {
+    content: "W.Speed：";
+}
+.zh div.report p.ball::before {
+    content: "球的位置：";
+}
+.zh div.report p.h-speed::before {
+    content: "水平速度：";
+}
+.zh div.report p.v-speed::before {
+    content: "垂直速度：";
+}
+.zh div.report p.w-size::before {
+    content: "窗口大小：";
+}
+.zh div.report p.fps::before {
+    content: "窗口帧率：";
+}
+.ja div.report p.ball::before {
+    content: "ボール位置";
+}
+.ja div.report p.h-speed::before {
+    content: "横軸速度：";
+}
+.ja div.report p.v-speed::before {
+    content: "縦軸速度：";
+}
+.ja div.report p.w-size::before {
+    content: "窓サイズ：";
+}
+.ja div.report p.fps::before {
+    content: "フレーム速度：";
+}
+
 div.main div.console :hover{
 	background: beige;
     color: crimson;
@@ -78,20 +148,40 @@ input[type="radio"] + label{
 	display: block;
 	float: left;
 	cursor: pointer;
-	width: 21.33333px;
-	height: 65px;
+	width: 21.33334px;
+	height: 85px;
 	margin: 0;
 	padding: 5px;
 	background: #bdc3c7;
 	color: #869198;
 	font-size: 16px;
 	text-align: center;
-	line-height: 1;
 	transition: .2s;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
 }
 input[type="radio"]:checked + label {
 	background-color: #a1b91d;
 	color: #fff;
+}
+div.console div {
+    position: absolute;
+    height: 23px;
+    width: 187px;
+    top: 94px;
+    border-radius: 0px 0px 5px 5px;
+    background-color: #a1b91d;
+    color: #fff;
+    padding: 0.5px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+div.console div.inactive {
+    background: #bdc3c7;
+    color: #869198;
 }
 div.main div.chaos-console {
 	display: none;
@@ -125,21 +215,73 @@ div.main div.chaos-console #gravBall:hover {
     opacity: 0.9;
     border-color: darkorange;
 }
-div.console div {
-	position: absolute;
-    height: 23px;
-    width: 187px;
-    top: 74px;
-    border-radius: 0px 0px 5px 5px;
-    background-color: #a1b91d;
-    color: #fff;
-    padding: 0.5px;
-    text-align: center;
-    font-size: 16px;
-    letter-spacing: 3px;
-    cursor: pointer;
+.en .console input#fast + label::before {
+    content: 'Fast Mode';
 }
-div.console div.inactive {
-	background: #bdc3c7;
-	color: #869198;
+.en .console input#slow + label::before {
+    content: 'Slow Mode';
 }
+.en .console input#chaos + label::before {
+    content: 'Chaos Mode';
+    font-size: 14px;
+}
+.en .console input#superGrav + label::before {
+    content: 'Spuer Grav';
+}
+.en .console input#onePress + label::before {
+    content: 'One Hit';
+}
+.en .console input#noCharge + label::before {
+    content: 'No Charge';
+}
+.en .console #normal::before {
+    content: 'Normal Mode';
+}
+.zh .console input#fast + label::before {
+    content: '加速模式';
+}
+.zh .console input#slow + label::before {
+    content: '减速模式';
+}
+.zh .console input#chaos + label::before {
+    content: '虚空模式';
+}
+.zh .console input#superGrav + label::before {
+    content: '极限重力';
+}
+.zh .console input#onePress + label::before {
+    content: '仅限一击';
+}
+.zh .console input#noCharge + label::before {
+    content: '禁止蓄力';
+}
+.zh .console #normal::before {
+    content: '通常模式';
+}
+.ja .console input#fast + label::before {
+    content: '加速モード';
+}
+.ja .console input#slow + label::before {
+    content: '減速モード';
+}
+.ja .console input#chaos + label::before {
+    content: '虚無モード';
+}
+.ja .console input#superGrav + label::before {
+    content: 'スーパー重力';
+    font-size: 13px;
+}
+.ja .console input#onePress + label::before {
+    content: '一撃のみ';
+}
+.ja .console input#noCharge + label::before {
+    content: 'チャージ禁止';
+    font-size: 13px;
+}
+.ja .console #normal::before {
+    content: '通常モード';
+}
+
+
+
+
